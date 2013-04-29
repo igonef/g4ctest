@@ -1,0 +1,31 @@
+<div id="user-list">
+  <h1>List Of Users</h1>
+
+  <table cellpadding="5" cellspacing="0">
+  <% for user in @users %>
+    <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+
+      <td>
+        <img class="list-image" src="<%= user.avatar.url(:thumb) %>"/>
+      </td>
+
+      <td width="60%">
+        <span class="list-title"><%= h(user.email) %></span><br />
+        <%= user.first_name %> <%= user.last_name %>
+      </td>
+
+      <td class="list-actions">
+        <%= link_to 'Show', admin_user_url(:id => user) %><br/>
+        <%= link_to 'Edit', edit_admin_user_url(:id => user) %><br/>
+        <%= link_to 'Destroy', admin_user_url(:id => user),
+                                 :confirm => "Are you sure?",
+                                 :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<br />
+
+<%= link_to 'New user', new_admin_user_url %>

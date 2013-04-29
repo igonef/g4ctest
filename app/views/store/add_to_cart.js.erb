@@ -1,0 +1,6 @@
+$("div#notice").hide();
+$("div#cart").html("<%= escape_javascript render(:partial=>"cart") %>")
+<% if  @cart.total_items == 1 %>
+$('div#cart').show('blind', 1000);
+<% end %>
+$('#current_item').css({'background-color':'#88ff88'}).animate({'background-color':'#114411'}, 1000);

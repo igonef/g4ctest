@@ -1,0 +1,31 @@
+<% f.object.errors.full_messages.each do |msg| %>
+   <p><%= msg %></p>
+<% end %>
+
+<p><label for="user_email">Email</label><br/>
+<%= f.text_field :email  %></p>
+
+<p><label for="user_first_name">First Name</label><br/>
+<%= f.text_field :first_name  %></p>
+
+<p><label for="user_last_name">Last Name</label><br/>
+<%= f.text_field :last_name  %></p>
+
+<% unless f.object.new_record? || f.object.errors.size > 0 || f.object.avatar_file_name.blank? %>
+  <p>
+    <%= image_tag(f.object.avatar.url(:middle), :alt => "") %>
+  </p>
+<% end %>
+<p><label for="user_avatar">Avatar</label><br/>
+<%= f.file_field :avatar  %></p>
+
+<% if !f.object.new_record? %>
+    <p><label for="user_current_password">Current Password</label><br/>
+    <%= f.password_field :current_password  %></p>
+<% end %>
+
+<p><label for="user_password">Password</label><br/>
+<%= f.password_field :password  %></p>
+
+<p><label for="user_password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation  %></p>

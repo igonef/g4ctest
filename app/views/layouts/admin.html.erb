@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Administer the Bookstore</title>
+  <%= stylesheet_link_tag  "application", "scaffold", "depot", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="admin">
+    <div id="banner">
+      <%= image_tag("logo.png") %>
+      <%= @page_title || "Pragmatic Bookshelf" %>
+    </div>
+
+    <div id="columns">
+      <div id="side">
+        <p>
+          <%= link_to "Products", admin_products_url %>
+        </p>
+        <p>
+          <%= link_to "List users", admin_users_url  %>
+          <br/>
+          <%= link_to "Add user", new_admin_user_url %>
+        </p>
+        <p>
+          <%= link_to "Logout", destroy_user_session_url %>
+        </p>
+      </div>
+      <div id="main">
+        <%= render :file => '/admin/partials/notice' %>
+        <%= yield %>
+      </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<h1>Your Pragmatic Catalog</h1>
+<%#= debug @cart %>
+<% for product in @products -%>
+  <div class="entry">
+    <%= image_tag(product.image.url) %>
+    <h3><%= h(product.title) %></h3>
+    <%= product.description.html_safe %>
+    <div class="price-line">
+      <span class="price"><%= number_to_currency(product.price) %></span>
+      <%= form_tag(add_to_cart_store_url(:id => product), :class => "product_add_form", :remote => true) do %>
+        <%= submit_tag "Add to Cart" %>
+      <% end %>
+      
+      </div>
+  </div>
+<% end %>
